@@ -20,13 +20,12 @@ class Network(object):
             self.A.append(a)
         return self.A[-1]
     
-    def back(self, X, y):
+    def back(self, X, y, eta):
         #backpropagates error to weights from inputs X and expected output O
         #derivaive of sigmoid(output sum[sigmoid**-1(forward)])
         dj = self.costFunctionPrime(X, y)
-        scalar = 3
         for i in range(0, len(dj)):
-            self.weights[i] = self.weights[i] - scalar*dj[i]  
+            self.weights[i] = self.weights[i] - eta*dj[i]  
         cost2 = self.costFunction(X, y)
         return cost2
         
